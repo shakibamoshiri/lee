@@ -43,9 +43,10 @@ let total = 0,
     wordWeight,
     sumWeight;
 
+const result =
 Object.keys( unique )
-       .sort( ( a, b ) => { return unique[ b ] - unique[ a ] } )
-       .forEach( ( key, index ) => {
+      .sort( ( a, b ) => { return unique[ b ] - unique[ a ] } )
+      .reduce( ( accum, key, index ) => {
             value = unique[ key ];
             each = value * weight;
             total += each;
@@ -55,9 +56,11 @@ Object.keys( unique )
             gWeight    = sprintf( value, 10 );
             wordWeight = sprintf( each.toFixed( 6 ), 10 );
             sumWeight  = sprintf( total.toFixed( 6 ), 10 );
-            
-            if( total - 1 <= percentage ){
-                log( lineNumber, vocabulary, gWeight, wordWeight, sumWeight )
-            }
-        });
+           
+            return ( total -1 <= percentage )
+            ? ( accum + lineNumber + vocabulary + gWeight + wordWeight + sumWeight + "\n" )
+            : accum; 
 
+        }, "");
+
+log( result );

@@ -33,10 +33,13 @@ const sprintf = ( text, space = 5 ) => {
 }
 
 let value = 0;
+const result =
 Object.keys( unique )
        .sort( ( a, b ) => { return unique[ a ] - unique[ b ] } )
-       .forEach( ( key, index ) => {
+       .reduce( ( accum, key ) => {
             value = unique[ key ];
-            log( sprintf( value ), key );
-        });
+            return accum + sprintf( value ) + key + "\n";
+            // log( sprintf( value ), key );
+        }, "");
+log( result );
 
