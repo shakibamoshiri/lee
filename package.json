@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/k-five/lee/issues"
   },
-  "homepage": "https://github.com/k-five/lee#readme"
+  "homepage": "https://github.com/k-five/lee#readme",
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
 }
